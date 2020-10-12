@@ -118,10 +118,6 @@ contains
     res%key = key
     res%to = to
   end
-  logical function less_node(a, b) result(res)
-    type(node), pointer, intent(in) :: a, b
-    res = a%key < b%key
-  end
   recursive function meld_node(a, b) result(res)
     type(node), pointer, intent(in) :: a, b
     type(node), pointer :: res, tmp
@@ -134,7 +130,7 @@ contains
       res => a
       return
     end if
-    if (less_node(a, b)) then
+    if (a%key < b%key) then
       res => a
       res%right => meld_node(res%right, b)
     else
