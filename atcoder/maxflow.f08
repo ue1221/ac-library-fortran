@@ -39,6 +39,7 @@ module module_maxflow
     procedure, private :: flow0 => flow0
     procedure, private :: flow1 => flow1
     generic :: flow => flow0, flow1
+    procedure :: min_cut => min_cut
   end type
 contains
   type(edge_) function new_edge_(to, rev, cap) result(res)
