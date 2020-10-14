@@ -1,4 +1,4 @@
-module mod_mint
+module module_mint
   use, intrinsic :: iso_fortran_env
   implicit none
   integer(int64), parameter :: modulus = 998244353_int64
@@ -231,22 +231,22 @@ contains
   pure elemental type(mint) function add_int64_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int64), intent(in) :: other
-    res = add_int64(this, other)
+    res = add(new_mint_int64(other), this)
   end
   pure elemental type(mint) function sub_int64_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int64), intent(in) :: other
-    res = sub_int64(this, other)
+    res = sub(new_mint_int64(other), this)
   end
   pure elemental type(mint) function mul_int64_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int64), intent(in) :: other
-    res = mul_int64(this, other)
+    res = mul(new_mint_int64(other), this)
   end
   pure elemental type(mint) function div_int64_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int64), intent(in) :: other
-    res = div_int64(this, other)
+    res = div(new_mint_int64(other), this)
   end
   pure elemental type(mint) function new_mint_int32(val) result(res)
     integer(int32), intent(in) :: val
@@ -275,22 +275,22 @@ contains
   pure elemental type(mint) function add_int32_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int32), intent(in) :: other
-    res = add_int32(this, other)
+    res = add(new_mint_int32(other), this)
   end
   pure elemental type(mint) function sub_int32_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int32), intent(in) :: other
-    res = sub_int32(this, other)
+    res = sub(new_mint_int32(other), this)
   end
   pure elemental type(mint) function mul_int32_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int32), intent(in) :: other
-    res = mul_int32(this, other)
+    res = mul(new_mint_int32(other), this)
   end
   pure elemental type(mint) function div_int32_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int32), intent(in) :: other
-    res = div_int32(this, other)
+    res = div(new_mint_int32(other), this)
   end
   pure elemental type(mint) function new_mint_int16(val) result(res)
     integer(int16), intent(in) :: val
@@ -319,22 +319,22 @@ contains
   pure elemental type(mint) function add_int16_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int16), intent(in) :: other
-    res = add_int16(this, other)
+    res = add(new_mint_int16(other), this)
   end
   pure elemental type(mint) function sub_int16_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int16), intent(in) :: other
-    res = sub_int16(this, other)
+    res = sub(new_mint_int16(other), this)
   end
   pure elemental type(mint) function mul_int16_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int16), intent(in) :: other
-    res = mul_int16(this, other)
+    res = mul(new_mint_int16(other), this)
   end
   pure elemental type(mint) function div_int16_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int16), intent(in) :: other
-    res = div_int16(this, other)
+    res = div(new_mint_int16(other), this)
   end
   pure elemental type(mint) function new_mint_int8(val) result(res)
     integer(int8), intent(in) :: val
@@ -363,21 +363,21 @@ contains
   pure elemental type(mint) function add_int8_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int8), intent(in) :: other
-    res = add_int8(this, other)
+    res = add(new_mint_int8(other), this)
   end
   pure elemental type(mint) function sub_int8_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int8), intent(in) :: other
-    res = sub_int8(this, other)
+    res = sub(new_mint_int8(other), this)
   end
   pure elemental type(mint) function mul_int8_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int8), intent(in) :: other
-    res = mul_int8(this, other)
+    res = mul(new_mint_int8(other), this)
   end
   pure elemental type(mint) function div_int8_rev(other, this) result(res)
     type(mint), intent(in) :: this
     integer(int8), intent(in) :: other
-    res = div_int8(this, other)
+    res = div(new_mint_int8(other), this)
   end
-end module mod_mint
+end module
