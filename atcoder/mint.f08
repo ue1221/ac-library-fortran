@@ -10,7 +10,7 @@ module module_mint
   end type
   interface mint
     module procedure :: new_mint_int64, new_mint_int32, new_mint_int16, new_mint_int8
-  end interface mint
+  end interface
   interface assignment(=)
     module procedure :: asgn_int64, asgn_int32, asgn_int16, asgn_int8
   end interface
@@ -35,6 +35,16 @@ module module_mint
   interface matmul
     module procedure :: matmul1, matmul2, matmul3
   end interface matmul
+  public :: mint, assignment(=), operator(+), operator(-), operator(*), operator(/), operator(**), dot_product, matmul
+  private :: new_mint_int64, new_mint_int32, new_mint_int16, new_mint_int8
+  private :: asgn_int64, asgn_int32, asgn_int16, asgn_int8
+  private :: add, add_int64, add_int64_rev, add_int32, add_int32_rev, add_int16, add_int16_rev, add_int8, add_int8_rev
+  private :: sub, sub_int64, sub_int64_rev, sub_int32, sub_int32_rev, sub_int16, sub_int16_rev, sub_int8, sub_int8_rev
+  private :: mul, mul_int64, mul_int64_rev, mul_int32, mul_int32_rev, mul_int16, mul_int16_rev, mul_int8, mul_int8_rev
+  private :: div, div_int64, div_int64_rev, div_int32, div_int32_rev, div_int16, div_int16_rev, div_int8, div_int8_rev
+  private :: pow_int64, pow_int32, pow_int16, pow_int8
+  private :: dot_prod, matmul1, matmul2, matmul3
+  private :: get, inv
 contains
   pure elemental integer(int64) function get(this) result(res)
     class(mint), intent(in) :: this
