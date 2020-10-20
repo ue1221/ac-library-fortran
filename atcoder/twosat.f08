@@ -11,6 +11,9 @@ module module_twosat
     procedure :: satisfiable => satisfiable
     procedure :: answer => answer
   end type
+  interface twosat
+    module procedure :: new_twosat
+  end interface
 contains
   type(twosat) function new_twosat(n) result(res)
     integer(int32), intent(in) :: n

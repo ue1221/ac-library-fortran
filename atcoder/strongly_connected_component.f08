@@ -26,11 +26,15 @@ module strongly_connected_component
     integer(int32), private :: n
     type(linked_list), private :: edges
   contains
-    procedure :: num_vertices => num_vertices
-    procedure :: add_edge => add_edge
-    procedure :: scc_ids => scc_ids
-    procedure :: scc => scc
+    procedure, public :: num_vertices => num_vertices
+    procedure, public :: add_edge => add_edge
+    procedure, public :: scc_ids => scc_ids
+    procedure, public :: scc => scc
   end type
+  interface scc_graph
+    module procedure :: new_scc_graph
+  end interface
+  private :: new_node
 contains
   function new_node(from, to) result(res)
     integer(int32), intent(in) :: from, to
