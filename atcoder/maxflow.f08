@@ -169,11 +169,9 @@ contains
       call flow_bfs(this%g, s, t, level, queue)
       if (level(t) == -1) exit
       iter = 1
-      do while (res < flow_limit)
-        flow = flow_dfs(this%g, t, s, level, iter, flow_limit - res)
-        if (flow == 0) exit
-        res = res + flow
-      end do
+      flow = flow_dfs(this%g, t, s, level, iter, flow_limit - res)
+      if (flow == 0) exit
+      res = res + flow
     end do
   end
   subroutine flow_bfs(g, s, t, level, queue)
@@ -200,8 +198,8 @@ contains
   end
   recursive integer(intkind) function flow_dfs(g, v, s, level, iter, up) result(res)
     type(edge_list_), intent(inout) :: g(:)
-    integer(int32), intent(in) :: v, s, level(:)
-    integer(int32), intent(inout) :: iter(:)
+    integer(int32), intent(in) :: v, s
+    integer(int32), intent(inout) :: level(:), iter(:)
     integer(intkind), intent(in) :: up
     integer(int32) :: level_v, i
     integer(intkind) :: d
@@ -218,9 +216,10 @@ contains
       g(v)%array(i)%cap = g(v)%array(i)%cap + d
       g(e%to)%array(e%rev)%cap = g(e%to)%array(e%rev)%cap - d
       res = res + d
-      if (res == up) exit
+      if (res == up) return
       iter(v) = iter(v) + 1
     end do
+    level(v) = size(g)
   end
   function min_cut(this, s) result(res)
     class(mf_graph), intent(in) :: this
